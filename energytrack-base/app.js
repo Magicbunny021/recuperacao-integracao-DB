@@ -23,3 +23,5 @@ try {
   console.error("Não foi possível iniciar a API:", erro.message);
   process.exit(1);
 }
+
+//Ultimo commit feito as 16:41
