@@ -15,6 +15,13 @@ export async function listar() {
 }
 
 export async function listarDetalhadas() {
+    const [detalhadas] = `
+    SELECT
+        maquinas.codigo,
+        maquinas.nome
+    FROM maquinas
+    INNER JOIN leituras_energia
+        ON maquinas.id = leituras_energia.id`
 }
 
 export async function buscarPorId(id) {
@@ -31,7 +38,7 @@ export async function atualizar(id, leitura) {
         leitura.horas_operacao,
         id
     );
-    return [resultado]
+    return affectedRows > 0
 }
 
 export async function deletar(id) {
