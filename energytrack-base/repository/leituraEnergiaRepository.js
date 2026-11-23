@@ -6,7 +6,7 @@ export async function cadastrar(leitura) {
         leitura.consumo_kwh, 
         leitura.horas_operacao
     )
-    return [resultado]
+    return [resultado.insertId]
 }
 
 export async function listar() {
@@ -22,6 +22,7 @@ export async function listarDetalhadas() {
     FROM maquinas
     INNER JOIN leituras_energia
         ON maquinas.id = leituras_energia.id`
+    return [detalhadas]
 }
 
 export async function buscarPorId(id) {
@@ -38,9 +39,10 @@ export async function atualizar(id, leitura) {
         leitura.horas_operacao,
         id
     );
-    return affectedRows > 0
+    return affectedRows > 0;
 }
 
 export async function deletar(id) {
     const sql = "DROP FROM leituras_energia WHERE id=?" [id]
+    return affectedRows;
 }
